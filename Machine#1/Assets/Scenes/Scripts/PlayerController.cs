@@ -85,20 +85,31 @@ public class PlayerController : MonoBehaviour
             EnemyAI enemy = hit.collider.GetComponent<EnemyAI>();
             if (enemy != null)
             {
-                // Attack the enemy
                 enemy.TakeDamage(attackDamage);
-
-                // Show attack effect
                 if (attackEffect != null)
                 {
                     GameObject effect = Instantiate(attackEffect, hit.point, Quaternion.identity);
                     Destroy(effect, 2f);
                 }
-
                 Debug.Log("Attacked enemy for " + attackDamage + " damage!");
+                return; // Exit if an enemy was hit
+            }
+
+            // Check if we hit a dark crystal
+            DarkCrystalHealth darkCrystal = hit.collider.GetComponent<DarkCrystalHealth>();
+            if (darkCrystal != null)
+            {
+                darkCrystal.TakeDamage(attackDamage);
+                if (attackEffect != null)
+                {
+                    GameObject effect = Instantiate(attackEffect, hit.point, Quaternion.identity);
+                    Destroy(effect, 2f);
+                }
+                Debug.Log("Attacked dark crystal for " + attackDamage + " damage!");
             }
         }
     }
+
 
     void TryPlaceBuilding(Vector2 screenPosition)
     {
