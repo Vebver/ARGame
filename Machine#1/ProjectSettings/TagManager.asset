@@ -5,11 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - Crystal
+  - DefenseTower
+  - SummonedCreature
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 
