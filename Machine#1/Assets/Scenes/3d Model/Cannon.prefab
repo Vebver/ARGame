@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2060092477489186915
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 29ef2fd7ebd411c4aa874a5927a2ec06, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.09
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 29ef2fd7ebd411c4aa874a5927a2ec06, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.9698
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 29ef2fd7ebd411c4aa874a5927a2ec06, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.8715577
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 29ef2fd7ebd411c4aa874a5927a2ec06, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 29ef2fd7ebd411c4aa874a5927a2ec06, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.78
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 29ef2fd7ebd411c4aa874a5927a2ec06, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 29ef2fd7ebd411c4aa874a5927a2ec06, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 29ef2fd7ebd411c4aa874a5927a2ec06, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 29ef2fd7ebd411c4aa874a5927a2ec06, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 29ef2fd7ebd411c4aa874a5927a2ec06, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 29ef2fd7ebd411c4aa874a5927a2ec06, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 29ef2fd7ebd411c4aa874a5927a2ec06, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 29ef2fd7ebd411c4aa874a5927a2ec06, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29ef2fd7ebd411c4aa874a5927a2ec06, type: 3}
+      propertyPath: m_Name
+      value: Cannon
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29ef2fd7ebd411c4aa874a5927a2ec06, type: 3}
+      propertyPath: m_TagString
+      value: DefenseTower
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 29ef2fd7ebd411c4aa874a5927a2ec06, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3877908988739876152}
+  m_SourcePrefab: {fileID: 100100000, guid: 29ef2fd7ebd411c4aa874a5927a2ec06, type: 3}
+--- !u!1 &1177553727796524338 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 29ef2fd7ebd411c4aa874a5927a2ec06, type: 3}
+  m_PrefabInstance: {fileID: 2060092477489186915}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3877908988739876152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177553727796524338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90423fa8bdbd7840ae914b42aba10e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 5
+  attackCooldown: 1
+  damage: 10
+  maxHealth: 100
