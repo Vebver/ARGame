@@ -130,8 +130,9 @@ public class PlayerController : MonoBehaviour
             if (gameManager != null && gameManager.CanAfford(GetBuildingCost()))
             {
                 // Place the building
-                GameObject building = Instantiate(selectedBuildingPrefab, hit.point, Quaternion.identity);
-                
+                Quaternion fixedRotation = Quaternion.Euler(-90, 0, 0);
+                GameObject building = Instantiate(selectedBuildingPrefab, hit.point, fixedRotation);
+
                 // Deduct energy cost
                 gameManager.SpendEnergy(GetBuildingCost());
                 
@@ -183,9 +184,9 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(currentPreview);
         }
-        
-        currentPreview = Instantiate(buildingPrefab);
-        
+
+        currentPreview = Instantiate(buildingPrefab, Vector3.zero, Quaternion.Euler(-90, 0, 0));
+
         // Make it a preview (disable colliders, change material, etc.)
         Collider[] colliders = currentPreview.GetComponentsInChildren<Collider>();
         foreach (Collider col in colliders)
@@ -233,7 +234,7 @@ public class PlayerController : MonoBehaviour
         }
 
         Vector3 spawnPosition = arCamera.transform.position + arCamera.transform.forward * 2f;
-        Quaternion spawnRotation = Quaternion.identity;
+        Quaternion spawnRotation = Quaternion.Euler(-90, 0, 0);
 
         GameObject tower = Instantiate(towerPrefab, spawnPosition, spawnRotation);
         Debug.Log("Tower summoned at: " + tower.transform.position);
