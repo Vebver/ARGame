@@ -259,12 +259,15 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
+
         // Spawn position in front of camera
         Vector3 spawnPosition = arCamera.transform.position + arCamera.transform.forward * 2f;
-        Quaternion spawnRotation = Quaternion.identity;
+        Quaternion spawnRotation = Quaternion.Euler(0, 90, 0);
 
         // Instantiate creature
         GameObject creature = Instantiate(creaturePrefab, spawnPosition, spawnRotation);
+
+        creature.transform.localScale = new Vector3(1.5f, 2.3f, 1f);
 
         // Deduct energy
         gameManager.SpendEnergy(GetCreatureCost());

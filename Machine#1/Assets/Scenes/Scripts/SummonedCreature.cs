@@ -1,16 +1,17 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SummonedCreature : MonoBehaviour
 {
     public float moveSpeed = 3f;
     public int damage = 5;
     public int maxHealth = 50;
-
+    private Animator animator;
     private int currentHealth;
 
     void Start()
     {
         currentHealth = maxHealth;
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -23,6 +24,22 @@ public class SummonedCreature : MonoBehaviour
             {
                 Attack(target);
             }
+
+            if (animator != null)
+                animator.SetBool("IsWalking", true);
+
+            // ✅ If close enough, attack
+            if (Vector3.Distance(transform.position, target.transform.position) < 1f)
+            {
+                Attack(target);
+            }
+        }
+
+        else
+        {
+            // No target → stop walking
+            if (animator != null)
+                animator.SetBool("IsWalking", false);
         }
     }
 
@@ -51,6 +68,9 @@ public class SummonedCreature : MonoBehaviour
 
     void Attack(GameObject enemy)
     {
+        if (animator != null)
+            animator.SetTrigger("Attack");
+
         EnemyAI enemyAI = enemy.GetComponent<EnemyAI>();
         if (enemyAI != null)
         {
@@ -63,6 +83,11 @@ public class SummonedCreature : MonoBehaviour
         currentHealth -= amount;
         if (currentHealth <= 0)
         {
+            if (animator != null)
+            {
+                animator.SetTrigger("Death");
+            }
+
             Destroy(gameObject);
         }
     }
