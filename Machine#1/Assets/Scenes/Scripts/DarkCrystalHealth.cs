@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DarkCrystalHealth : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class DarkCrystalHealth : MonoBehaviour
 
         // Optionally, play destruction effect or animation
         Destroy(gameObject);
+        SceneManager.LoadScene("Winner");
     }
 }
 
