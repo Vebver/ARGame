@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DarkCrystalHealth : MonoBehaviour
 {
-    public float currentHealth = 100f;
+    public float currentHealth = 500f;
     public int spawnPointIndex; // Assign this in Inspector to link to a specific spawn point
 
     public void TakeDamage(float damage)

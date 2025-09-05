@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pirate Idle1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4c73e83427570654abfaffe00338b5b2, type: 3}
+      propertyPath: m_TagString
+      value: SummonedCreature
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -101,6 +105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5adad678500dd374885b52613d1f3272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
-  damage: 5
+  moveSpeed: 3
+  damage: 2
   maxHealth: 50

@@ -2,8 +2,8 @@
 
 public class SummonedCreature : MonoBehaviour
 {
-    public float moveSpeed = 3f;
-    public int damage = 5;
+    public float moveSpeed = 2f;
+    public int damage = 1;
     public int maxHealth = 50;
     private Animator animator;
     private int currentHealth;
@@ -16,7 +16,7 @@ public class SummonedCreature : MonoBehaviour
 
     void Update()
     {
-        GameObject target = FindNearestEnemy();
+        GameObject target = FindNearestTarget();
         if (target != null)
         {
             MoveTowards(target);
@@ -27,34 +27,37 @@ public class SummonedCreature : MonoBehaviour
 
             if (animator != null)
                 animator.SetBool("IsWalking", true);
-
-            // ✅ If close enough, attack
-            if (Vector3.Distance(transform.position, target.transform.position) < 1f)
-            {
-                Attack(target);
-            }
         }
-
-        else
+         else
         {
-            // No target → stop walking
             if (animator != null)
                 animator.SetBool("IsWalking", false);
         }
     }
 
-    GameObject FindNearestEnemy()
+    GameObject FindNearestTarget()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] crystals = GameObject.FindGameObjectsWithTag("DarkCrystal");
         GameObject nearest = null;
         float minDist = Mathf.Infinity;
-        foreach (GameObject enemy in enemies)
+
+        foreach (GameObject obj in enemies)
         {
-            float dist = Vector3.Distance(transform.position, enemy.transform.position);
+            float dist = Vector3.Distance(transform.position, obj.transform.position);
             if (dist < minDist)
             {
                 minDist = dist;
-                nearest = enemy;
+                nearest = obj;
+            }
+        }
+        foreach (GameObject obj in crystals)
+        {
+            float dist = Vector3.Distance(transform.position, obj.transform.position);
+            if (dist < minDist)
+            {
+                minDist = dist;
+                nearest = obj;
             }
         }
         return nearest;
@@ -66,15 +69,23 @@ public class SummonedCreature : MonoBehaviour
         transform.position += direction * moveSpeed * Time.deltaTime;
     }
 
-    void Attack(GameObject enemy)
+    void Attack(GameObject target)
     {
         if (animator != null)
             animator.SetTrigger("Attack");
 
-        EnemyAI enemyAI = enemy.GetComponent<EnemyAI>();
+        EnemyAI enemyAI = target.GetComponent<EnemyAI>();
         if (enemyAI != null)
         {
             enemyAI.TakeDamage(damage);
+            return;
+        }
+
+        // Try to damage a dark crystal
+        DarkCrystalHealth darkCrystal = target.GetComponent<DarkCrystalHealth>();
+        if (darkCrystal != null)
+        {
+            darkCrystal.TakeDamage((float)damage);
         }
     }
 
