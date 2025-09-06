@@ -102,4 +102,16 @@ public class SummonedCreature : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public static void SummonCreature(GameManager gameManager, GameObject summonedCreaturePrefab, Vector3 position, int creatureEnergyCost)
+    {
+        if (gameManager.TrySpendEnergy(creatureEnergyCost))
+        {
+            Instantiate(summonedCreaturePrefab, position, Quaternion.identity);
+        }
+        else
+        {
+            Debug.Log("Not enough energy!");
+        }
+    }
 }

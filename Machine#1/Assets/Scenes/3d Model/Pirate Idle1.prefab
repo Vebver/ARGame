@@ -9,16 +9,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4c73e83427570654abfaffe00338b5b2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4c73e83427570654abfaffe00338b5b2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4c73e83427570654abfaffe00338b5b2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.0699997
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4c73e83427570654abfaffe00338b5b2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.5469999
+      value: 0.547
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4c73e83427570654abfaffe00338b5b2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -105,6 +109,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5adad678500dd374885b52613d1f3272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  damage: 2
+  moveSpeed: 2
+  damage: 1
   maxHealth: 50

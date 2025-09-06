@@ -60,4 +60,17 @@ public class DefenseTower : MonoBehaviour
             Destroy(gameObject);
         }
     }
-} 
+
+    public static void SummonTower(GameManager gameManager, GameObject summonedTowerPrefab, Vector3 position, int creatureEnergyCost)
+    {
+        if (gameManager.TrySpendEnergy(creatureEnergyCost))
+        {
+            Instantiate(summonedTowerPrefab, position, Quaternion.identity);
+        }
+        else
+        {
+            Debug.Log("Not enough energy!");
+        }
+    }
+}
+

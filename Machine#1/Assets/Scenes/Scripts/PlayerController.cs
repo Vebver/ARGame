@@ -134,7 +134,7 @@ public class PlayerController : MonoBehaviour
                 GameObject building = Instantiate(selectedBuildingPrefab, hit.point, fixedRotation);
 
                 // Deduct energy cost
-                gameManager.SpendEnergy(GetBuildingCost());
+                gameManager.TrySpendEnergy(GetBuildingCost());
                 
                 // Destroy only the preview, not the placed building
                 if (currentPreview != null)
@@ -238,6 +238,8 @@ public class PlayerController : MonoBehaviour
 
         GameObject tower = Instantiate(towerPrefab, spawnPosition, spawnRotation);
         Debug.Log("Tower summoned at: " + tower.transform.position);
+
+        gameManager.TrySpendEnergy(GetCreatureCost());
     }
     public void SummonCreature()
     {
@@ -270,7 +272,7 @@ public class PlayerController : MonoBehaviour
         creature.transform.localScale = new Vector3(1.5f, 2.3f, 1f);
 
         // Deduct energy
-        gameManager.SpendEnergy(GetCreatureCost());
+        gameManager.TrySpendEnergy(GetCreatureCost());
 
         Debug.Log("Creature summoned at: " + creature.transform.position);
     }

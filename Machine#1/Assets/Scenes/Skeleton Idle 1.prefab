@@ -453,7 +453,7 @@ MonoBehaviour:
   attackRange: 2
   attackCooldown: 1
   moveSpeed: 3
-  energyOrbPrefab: {fileID: 0}
+  energyOrbPrefab: {fileID: 919132149155446097, guid: a9c25aba89d34624cbcf1f8250f837cb, type: 3}
   energyDropChance: 0.3
 --- !u!195 &4335974967209643302
 NavMeshAgent:
