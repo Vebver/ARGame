@@ -4,28 +4,26 @@ using UnityEngine.UI;
 public class DarkCrystalHealth : MonoBehaviour
 {
     [SerializeField] private float maxHealth = 2000f;
-    [SerializeField] private Healthbar _healthbar; // Fixed type name (capital B)
+    public Healthbar healthbar; // Reference to your Healthbar script
 
     public int spawnPointIndex;
     private float currentHealth;
 
     private void Start()
     {
-        currentHealth = maxHealth; // Initialize health at start
-        _healthbar.UpdateHealthbar(maxHealth, currentHealth);
+        currentHealth = maxHealth;
+        healthbar.UpdateHealthbar(maxHealth, currentHealth);
     }
 
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        Debug.Log("Dark Crystal " + spawnPointIndex + " Health: " + currentHealth);
-
-        _healthbar.UpdateHealthbar(maxHealth, currentHealth); // Semicolon added
-
+        if (currentHealth < 0) currentHealth = 0;
+        healthbar.UpdateHealthbar(maxHealth, currentHealth);
         if (currentHealth <= 0)
         {
             Die();
-        }
+            }
     }
 
     void Die()
