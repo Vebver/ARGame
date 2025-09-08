@@ -1,14 +1,26 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DarkCrystalHealth : MonoBehaviour
 {
-    public float currentHealth = 2000f;
-    public int spawnPointIndex; // Assign this in Inspector to link to a specific spawn point
+    [SerializeField] private float maxHealth = 2000f;
+    [SerializeField] private Healthbar _healthbar; // Fixed type name (capital B)
+
+    public int spawnPointIndex;
+    private float currentHealth;
+
+    private void Start()
+    {
+        currentHealth = maxHealth; // Initialize health at start
+        _healthbar.UpdateHealthbar(maxHealth, currentHealth);
+    }
 
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
         Debug.Log("Dark Crystal " + spawnPointIndex + " Health: " + currentHealth);
+
+        _healthbar.UpdateHealthbar(maxHealth, currentHealth); // Semicolon added
 
         if (currentHealth <= 0)
         {
@@ -19,6 +31,7 @@ public class DarkCrystalHealth : MonoBehaviour
     void Die()
     {
         Debug.Log("Dark Crystal " + spawnPointIndex + " Destroyed!");
+
         // Notify the EnemySpawner to stop spawning from this lane
         EnemySpawner spawner = FindObjectOfType<EnemySpawner>();
         if (spawner != null)
@@ -30,4 +43,3 @@ public class DarkCrystalHealth : MonoBehaviour
         Destroy(gameObject);
     }
 }
-
