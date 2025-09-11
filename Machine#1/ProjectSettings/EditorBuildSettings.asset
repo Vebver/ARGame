@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Winner.unity
+    guid: f5cee4c71c350d749a6ad7ecf6adb645
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: a5f018c048cadf64ab77c2d1c1e3a1d3, type: 2}
