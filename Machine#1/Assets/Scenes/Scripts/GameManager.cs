@@ -4,6 +4,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    [Header("UI")]
+    public EnergyBar energyBarUI; // Drag your EnergyBar object here in the Inspector
+
     [Header("Energy System")]
     public int currentEnergy = 100;
     public int maxEnergy = 200;
@@ -21,17 +24,28 @@ public class GameManager : MonoBehaviour
         else
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject); // Optional: if you want the GameManager to persist
         }
     }
 
     void Start()
     {
         lastEnergyRechargeTime = Time.time;
+        UpdateEnergyUI(); // Initial update
     }
 
     void Update()
     {
         RechargeEnergy();
+    }
+
+    // Method to update the UI display
+    private void UpdateEnergyUI()
+    {
+        if (energyBarUI != null)
+        {
+            energyBarUI.UpdateEnergyBar(maxEnergy, currentEnergy);
+        }
     }
 
     void RechargeEnergy()
@@ -41,6 +55,7 @@ public class GameManager : MonoBehaviour
             currentEnergy = Mathf.Min(maxEnergy, currentEnergy + Mathf.RoundToInt(energyRechargeRate));
             lastEnergyRechargeTime = Time.time;
             Debug.Log("Current Energy: " + currentEnergy);
+            UpdateEnergyUI(); // Update UI after recharging
         }
     }
 
@@ -53,12 +68,12 @@ public class GameManager : MonoBehaviour
     {
         currentEnergy = Mathf.Min(maxEnergy, currentEnergy + amount);
         Debug.Log("Energy Gained: " + amount + ", Current Energy: " + currentEnergy);
+        UpdateEnergyUI(); // Update UI after adding energy
     }
 
     public void OnEnemyKilled(Vector3 enemyPosition)
     {
         AddEnergy(5);
-
     }
 
     public bool TrySpendEnergy(int amount)
@@ -67,9 +82,9 @@ public class GameManager : MonoBehaviour
         {
             currentEnergy -= amount;
             Debug.Log("Energy Spent: " + amount + ", Remaining Energy: " + currentEnergy);
+            UpdateEnergyUI(); // Update UI after spending energy
             return true;
         }
         return false;
     }
 }
-

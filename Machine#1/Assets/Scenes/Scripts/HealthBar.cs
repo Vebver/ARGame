@@ -11,3 +11,4 @@ public class Healthbar : MonoBehaviour
         _healthbarsprite.fillAmount = currenthealth / maxhealth;
     }
 }
+
