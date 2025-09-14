@@ -31,14 +31,27 @@ public class DarkCrystalHealth : MonoBehaviour
     {
         Debug.Log("Dark Crystal " + spawnPointIndex + " Destroyed!");
 
-        // Notify the EnemySpawner to stop spawning from this lane
         EnemySpawner spawner = FindObjectOfType<EnemySpawner>();
         if (spawner != null)
         {
             spawner.StopSpawningFromLane(spawnPointIndex);
         }
 
-        // Optionally, play destruction effect or animation
-        SceneManager.LoadScene("Winner");
+        // Notify manager
+        CrystalManager manager = FindObjectOfType<CrystalManager>();
+        if (manager != null)
+        {
+            manager.CheckCrystals();
+        }
+
+        // Destroy this crystal object if needed
+        Destroy(gameObject);
     }
+
+    // Helper method for the manager
+    public bool IsAlive()
+    {
+        return currentHealth > 0;
+    }
+
 }
